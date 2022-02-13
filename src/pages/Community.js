@@ -18,8 +18,6 @@ function Community() {
     });
   }, []);
 
-  console.log(state.articles);
-
   return state.loading ? (
     <div>loading...</div>
   ) : (
@@ -29,11 +27,12 @@ function Community() {
       {state.articles.map((article) => (
         <div key={article.id}>
           <p>{article.title}</p>
-          {
-            // TODO article.places 화면에 표시하기
-            // TODO article.like, article.comments 화면에 표시하기
-            // TODO article.createdAt 화면에 표시하기
-          }
+          {article.places.map((place, index) => {
+            return <p key={index}>{place.name}</p>
+          })}
+          <span>{article.createdAt}</span>
+          <span>좋아요{article.like}</span>
+          <span>댓글{article.comments}</span>
         </div>
       ))}
     </div>
