@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 import { loadCommunityArticles } from "../api/community";
+import ArticleList from "../components/ArticleList";
+import styled from "styled-components";
+
+const StyledLoading = styled.div`
+  font-size: 40px;
+`
 
 function Community() {
   const [state, setState] = useState({
@@ -19,22 +25,12 @@ function Community() {
   }, []);
 
   return state.loading ? (
-    <div>loading...</div>
+    <StyledLoading>loading...</StyledLoading>
   ) : (
     <div>
       <div>Community</div>
       <p>articles</p>
-      {state.articles.map((article) => (
-        <div key={article.id}>
-          <p>{article.title}</p>
-          {article.places.map((place, index) => {
-            return <p key={index}>{place.name}</p>
-          })}
-          <span>{article.createdAt}</span>
-          <span>좋아요{article.like}</span>
-          <span>댓글{article.comments}</span>
-        </div>
-      ))}
+      <ArticleList articles={state.articles}/>
     </div>
   );
 }
