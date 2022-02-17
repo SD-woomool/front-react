@@ -1,10 +1,4 @@
-import { fakeFetch } from "./util";
-
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080";
-
-function addBackendUrl(url) {
-  return backendUrl + url;
-}
+import { addBackendUrl, fakeFetch } from "./util";
 
 export function checkAuth() {
   return fakeFetch(addBackendUrl("/auth"), { data: { isLogin: true } });
