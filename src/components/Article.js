@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 const StyledArticle = styled.div`
   min-height: 85px;
+  border-bottom: 1px solid rgb(227, 227, 227);
+  padding: 10px 15px;
+
   h1 {
     color: var(--black);
     font-size: 16px;
@@ -17,13 +20,16 @@ const StyledArticle = styled.div`
 `
 
 function Article ( {article} ) {
-  console.log(article);
   return (
     <StyledArticle>
       <h1>{article.title}</h1>
       <div id="places">
-        {article.places.map((place, index) => {
-          return <span key={index}>{place.name}</span>
+        {article.places.map((place, index) => { 
+          let delimeter = ' - ';
+          if (index === article.places.length - 1) {
+            delimeter = '';
+          }
+          return <span key={index}>{place.name + delimeter}</span>
         })}
       </div>
       <div>
