@@ -1,11 +1,17 @@
 import styled from "styled-components";
-import { ReactComponent as Subway } from "../assets/Subway.svg";
+import Category from "./Category";
 
 const StyledArticle = styled.div`
   min-height: 85px;
   border-bottom: 1px solid rgb(227, 227, 227);
   padding: 10px 15px;
   display: flex;
+  
+  svg {
+    fill: #9c9c9c;
+    width: 40px;
+    height: 40px;
+  }
 
   .image {
     height: 85px;
@@ -49,7 +55,6 @@ function Article ( {article} ) {
       {article.hasOwnProperty('thumbnail') ? <img className="image" alt="thumbnail" src={article.thumbnail} /> : null}
       <div id="articleBox">
         <h1>{article.title}</h1>
-        <Subway />
         <div id="places">
           {article.places.map((place, index) => { 
             let delimiter = ' - ';
