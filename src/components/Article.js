@@ -1,14 +1,31 @@
 import styled from "styled-components";
+import { ReactComponent as Subway } from "../assets/Subway.svg";
 
 const StyledArticle = styled.div`
   min-height: 85px;
   border-bottom: 1px solid rgb(227, 227, 227);
   padding: 10px 15px;
+  display: flex;
 
+  .image {
+    height: 85px;
+    aspect-ratio: 16 / 9;
+  }
+
+  #articleBox {
+    padding-left: 10px;
+  }
+  
   h1 {
     color: var(--black);
     font-size: 16px;
     margin-bottom: 5px;
+    max-height: 85px;
+    overflow: hidden;
+    text-overflow: ellipsis; // 말줄임
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }  
   span { 
     color: var(--gray);
@@ -16,26 +33,37 @@ const StyledArticle = styled.div`
   }
   #places {
     margin: 5px 0px;
+    max-height: 85px;
+    overflow: hidden;
+    text-overflow: ellipsis; // 말줄임
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 `
 
 function Article ( {article} ) {
+  console.log(article)
   return (
     <StyledArticle>
-      <h1>{article.title}</h1>
-      <div id="places">
-        {article.places.map((place, index) => { 
-          let delimeter = ' - ';
-          if (index === article.places.length - 1) {
-            delimeter = '';
-          }
-          return <span key={index}>{place.name + delimeter}</span>
-        })}
-      </div>
-      <div>
-        <span>{article.createdAt}</span>
-        <span> 좋아요 {article.like}</span>
-        <span> 댓글 {article.comments}</span>
+      {article.hasOwnProperty('thumbnail') ? <img className="image" alt="thumbnail" src={article.thumbnail} /> : null}
+      <div id="articleBox">
+        <h1>{article.title}</h1>
+        <Subway />
+        <div id="places">
+          {article.places.map((place, index) => { 
+            let delimiter = ' - ';
+            if (index === article.places.length - 1) {
+              delimiter = '';
+            }
+            return <span key={index}>{place.name + delimiter}</span>
+          })}
+        </div>
+        <div>
+          <span>{article.createdAt}</span>
+          <span> 좋아요 {article.like}</span>
+          <span> 댓글 {article.comments}</span>
+        </div>
       </div>
     </StyledArticle>
   );
