@@ -4,6 +4,7 @@ import Community from "./pages/Community";
 import Account from "./pages/Account";
 import Test from "./pages/Test";
 import App from "./App";
+import React from "react";
 
 function Router() {
   return (

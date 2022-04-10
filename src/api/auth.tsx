@@ -1,5 +1,10 @@
 import { addBackendUrl, fakeFetch } from "./util";
 
-export function checkAuth() {
+interface IResult {
+  isLogin: boolean;
+  user: object;
+}
+
+export function checkAuth(): Promise<IResult> {
   return fakeFetch(addBackendUrl("/auth"), { data: { isLogin: true } });
 }

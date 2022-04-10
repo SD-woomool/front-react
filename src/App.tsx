@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { initAuth, setAuth } from "./context/auth/local-storage/util";
 import { checkAuth } from "./api/auth";
 import { ReactComponent as Loader } from "./assets/loader.svg";
+import React from "react";
 
 function App() {
   const [loading, setLoading] = useState(true);

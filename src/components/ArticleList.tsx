@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import Article from "./Article";
+import Article, { IArticle } from "./Article";
 import SearchBar from "./SearchBar";
-import {ReactComponent as Pencil} from "../assets/pencil.svg";
+import { ReactComponent as Pencil } from "../assets/pencil.svg";
+import React from "react";
 
 const StyledArticleList = styled.div`
   #lastPlace {
@@ -22,17 +23,19 @@ const StyledArticleList = styled.div`
     bottom: 75px;
     right: 30px;
   }
-`
+`;
 
-function ArticleList ({articles}) {
+function ArticleList({ articles }: { articles: IArticle[] }) {
   return (
     <StyledArticleList>
       <SearchBar />
       {articles.map((article, index) => (
-        <Article key={index} article={article}/>
+        <Article key={index} article={article} />
       ))}
       <div id="lastPlace">마지막 검색 결과입니다.</div>
-      <button id="pencil"><Pencil /></button>
+      <button id="pencil">
+        <Pencil />
+      </button>
     </StyledArticleList>
   );
 }
