@@ -1,10 +1,10 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
-import BottomNavigation from "./components/BottomNavigation";
 import { useEffect, useState } from "react";
+import BottomNavigation from "./components/BottomNavigation";
 import { initAuth, setAuth } from "./context/auth/local-storage/util";
 import { checkAuth } from "./api/auth";
 import { ReactComponent as Loader } from "./assets/loader.svg";
-import React from "react";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ function App() {
     <Loader width="40" height="40" />
   ) : (
     <>
-      <Outlet />
+      <Outlet /> {/* <App /> 하위 계층에 있는 모든 Route들  */}
       <BottomNavigation />
     </>
   );

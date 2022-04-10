@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 import { loadCommunityArticles } from "../api/community";
 import ArticleList from "../components/ArticleList";
-import styled from "styled-components";
-import React from "react";
 
 const StyledLoading = styled.div`
   font-size: 40px;
