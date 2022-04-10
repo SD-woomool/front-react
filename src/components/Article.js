@@ -5,12 +5,19 @@ const StyledArticle = styled.div`
   min-height: 85px;
   border-bottom: 1px solid rgb(227, 227, 227);
   padding: 10px 15px;
+  margin-bottom: 5px;
   display: flex;
+
+  &:hover { // & 문자를 사용하여 자기 자신 선택 
+    background-color: #F7F7F7;
+  }
   
-  svg {
+  svg { // place 뒤에 붙는 아이콘
+    width: 13px;
+    height: 13px;
     fill: #9c9c9c;
-    width: 40px;
-    height: 40px;
+    margin-left: 2px;
+    vertical-align: bottom;
   }
 
   .image {
@@ -28,28 +35,41 @@ const StyledArticle = styled.div`
     margin-bottom: 5px;
     max-height: 85px;
     overflow: hidden;
-    text-overflow: ellipsis; // 말줄임
+    text-overflow: ellipsis; // ...
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }  
+
   span { 
     color: var(--gray);
     font-size: 12px;
   }
+
   #places {
     margin: 5px 0px;
     max-height: 85px;
     overflow: hidden;
-    text-overflow: ellipsis; // 말줄임
+    text-overflow: ellipsis; // ...
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  #dateLikeComments {
+    color: var(--black);
+    font-size: 12px;
+    margin-bottom: 5px;
+    max-height: 85px;
+    overflow: hidden;
+    text-overflow: ellipsis; // ...
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
 `
 
 function Article ( {article} ) {
-  console.log(article)
   return (
     <StyledArticle>
       {article.hasOwnProperty('thumbnail') ? <img className="image" alt="thumbnail" src={article.thumbnail} /> : null}
@@ -61,10 +81,10 @@ function Article ( {article} ) {
             if (index === article.places.length - 1) {
               delimiter = '';
             }
-            return <span key={index}>{place.name + delimiter}</span>
+            return <span key={index}>{place.name}<Category category={place.category}/>{delimiter}</span>
           })}
         </div>
-        <div>
+        <div id="dateLikeComments">
           <span>{article.createdAt}</span>
           <span> 좋아요 {article.like}</span>
           <span> 댓글 {article.comments}</span>
