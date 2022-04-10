@@ -1,5 +1,5 @@
+import React from "react";
 import styled from "styled-components";
-
 
 const StyledWrapper = styled.div`
   h1 {
@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-function Test () {
+function Test() {
   return (
     <StyledWrapper>
       <h1>test</h1>

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { loadCommunityArticles } from "../api/community";
 import ArticleList from "../components/ArticleList";
 import styled from "styled-components";
+import React from "react";
 
 const StyledLoading = styled.div`
   font-size: 40px;
-`
+`;
 
 function Community() {
   const [state, setState] = useState({
@@ -30,7 +31,7 @@ function Community() {
     <div>
       <div>Community</div>
       <p>articles</p>
-      <ArticleList articles={state.articles}/>
+      <ArticleList articles={state.articles} />
     </div>
   );
 }
