@@ -3,6 +3,7 @@ import Article, { IArticle } from "./Article";
 import SearchBar from "./SearchBar";
 import { ReactComponent as Pencil } from "../assets/pencil.svg";
 import React from "react";
+import { useState } from "react";
 
 const StyledArticleList = styled.div`
   #lastPlace {
@@ -25,10 +26,56 @@ const StyledArticleList = styled.div`
   }
 `;
 
+const ContentBox = styled.div`
+  display: flex;
+  font-size: 12px;
+  color: rgb(124, 124, 124);
+  padding: 5px 15px;
+  border-bottom: 1px solid rgb(227, 227, 227);
+  div:nth-child(1) {
+    flex: 5.6;
+  }
+  div:nth-child(2) {
+    flex: 1;
+  }
+  span.active {
+    color: rgb(56, 127, 234);
+  }
+`;
+
+// 최신순, 좋아요
+const StyledSpan = styled.span`
+  cursor: pointer;
+  ::before {
+    content: "•";
+  }
+`;
+
 function ArticleList({ articles }: { articles: IArticle[] }) {
+  const [clicked, setClicked] = useState<boolean>(true);
+  const onClick = () => {
+    setClicked((clicked) => !clicked);
+  };
   return (
     <StyledArticleList>
       <SearchBar />
+      <ContentBox>
+        <div>코스 {articles.length}개</div>
+        <div>
+          <StyledSpan
+            className={clicked === true ? "active" : ""}
+            onClick={onClick}
+          >
+            최신순
+          </StyledSpan>
+          <StyledSpan
+            className={clicked === false ? "active" : ""}
+            onClick={onClick}
+          >
+            좋아요
+          </StyledSpan>
+        </div>
+      </ContentBox>
       {articles.map((article, index) => (
         <Article key={index} article={article} />
       ))}
