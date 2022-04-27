@@ -2,7 +2,6 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import { loadCommunityArticles } from "../api/community";
 import ArticleList from "../components/ArticleList";
-import BottomNavigation from "../components/BottomNavigation";
 import SearchBar from "../components/SearchBar";
 
 const StyledLoading = styled.div`
@@ -30,8 +29,6 @@ function Community() {
     <StyledLoading>loading...</StyledLoading>
   ) : (
     <div>
-      <div>Community</div>
-      <p>articles</p>
       <SearchBar />
       <ArticleList articles={state.articles} />
     </div>

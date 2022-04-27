@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as Home } from "../assets/home.svg";
 import { ReactComponent as Community } from "../assets/community.svg";
@@ -18,32 +18,26 @@ const Navigation = styled.div`
   right: 0;
   left: 0;
   border-top: 1px solid rgb(227, 227, 227);
-  cursor: pointer;
   .active {
     fill: rgb(56, 127, 234);
+    cursor: pointer;
   }
 `;
 
-// 아이콘을 클릭하면 클릭된 아이콘 색상 변경하기
-
 function BottomNavigation() {
-  const [clicked, setClicked] = useState<number>(0);
+  const moveToHome = useMatch("/");
+  const moveToCommunity = useMatch("community");
+  const moveToAccount = useMatch("account");
   return (
     <Navigation>
-      <Link to="/" onClick={() => setClicked(0)}>
-        <Home className={clicked === 0 ? "active" : undefined} id="home" />
+      <Link to="/">
+        <Home className={moveToHome ? "active" : undefined} />
       </Link>
-      <Link to="/community" onClick={() => setClicked(1)}>
-        <Community
-          id="community"
-          className={clicked === 1 ? "active" : undefined}
-        />
+      <Link to="/community">
+        <Community className={moveToCommunity ? "active" : undefined} />
       </Link>
-      <Link to="/account" onClick={() => setClicked(2)}>
-        <Account
-          id="account"
-          className={clicked === 2 ? "active" : undefined}
-        />
+      <Link to="/account">
+        <Account className={moveToAccount ? "active" : undefined} />
       </Link>
     </Navigation>
   );
