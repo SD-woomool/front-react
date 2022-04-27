@@ -58,7 +58,6 @@ function ArticleList({ articles }: { articles: IArticle[] }) {
   };
   return (
     <StyledArticleList>
-      <SearchBar />
       <ContentBox>
         <div>코스 {articles.length}개</div>
         <div>
