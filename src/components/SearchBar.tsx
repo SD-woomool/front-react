@@ -5,8 +5,9 @@ import { useState } from "react";
 const Form = styled.form`
   display: flex;
   position: relative;
-  height: 40px;
   border-bottom: 1px solid rgb(227, 227, 227);
+  overflow: hidden;
+  max-height: 40px;
 `;
 
 const Input = styled.input`
@@ -20,6 +21,7 @@ const Input = styled.input`
 
 const Buttons = styled.div`
   display: flex;
+  height: 39px;
 `;
 
 const FilterButton = styled.button`

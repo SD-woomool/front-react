@@ -9,6 +9,7 @@ const StyledTopBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  top: 0px;
   padding: 0 8px;
   height: 45px;
 `;

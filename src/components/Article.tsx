@@ -3,35 +3,29 @@ import styled from "styled-components";
 import Category from "./Category";
 
 const StyledArticle = styled.div`
+  display: flex;
   min-height: 85px;
   border-bottom: 1px solid rgb(227, 227, 227);
   padding: 10px 15px;
   margin-bottom: 5px;
-  display: flex;
-
   &:hover {
-    // & 문자를 사용하여 자기 자신 선택
     background-color: #f7f7f7;
   }
-
+  // place 뒤에 붙는 아이콘
   svg {
-    // place 뒤에 붙는 아이콘
     width: 13px;
     height: 13px;
-    fill: #9c9c9c;
     margin-left: 2px;
     vertical-align: bottom;
+    fill: #9c9c9c;
   }
-
   .image {
     height: 85px;
     aspect-ratio: 16 / 9;
   }
-
   #articleBox {
     padding-left: 10px;
   }
-
   h1 {
     color: var(--black);
     font-size: 16px;
@@ -43,12 +37,10 @@ const StyledArticle = styled.div`
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
-
   span {
     color: var(--gray);
     font-size: 12px;
   }
-
   #places {
     margin: 5px 0px;
     max-height: 85px;
@@ -58,7 +50,6 @@ const StyledArticle = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-
   #dateLikeComments {
     color: var(--black);
     font-size: 12px;

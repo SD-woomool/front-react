@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Article, { IArticle } from "./Article";
-import SearchBar from "./SearchBar";
 import { ReactComponent as Pencil } from "../assets/pencil.svg";
 import React from "react";
 import { useState } from "react";
@@ -32,12 +31,8 @@ const ContentBox = styled.div`
   color: rgb(124, 124, 124);
   padding: 5px 15px;
   border-bottom: 1px solid rgb(227, 227, 227);
-  div:nth-child(1) {
-    flex: 5.6;
-  }
-  div:nth-child(2) {
-    flex: 1;
-  }
+  max-height: 23px;
+  justify-content: space-between;
   span.active {
     color: rgb(56, 127, 234);
   }
@@ -45,6 +40,8 @@ const ContentBox = styled.div`
 
 // 최신순, 좋아요
 const StyledSpan = styled.span`
+  max-width: 43px;
+  margin-left: 5px;
   cursor: pointer;
   ::before {
     content: "•";
