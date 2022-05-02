@@ -5,27 +5,26 @@ import { useState } from "react";
 const Form = styled.form`
   display: flex;
   position: relative;
+  max-height: 39px;
   border-bottom: 1px solid rgb(227, 227, 227);
-  overflow: hidden;
-  max-height: 40px;
 `;
 
 const Input = styled.input`
   flex: 1 1 0%;
-  min-width: 70%;
+  width: 70%;
   padding: 5px 10px;
+  border: 1px solid rgb(255, 255, 255);
   color: rgb(92, 92, 92);
   font-size: 16px;
-  border: 1px solid rgb(255, 255, 255);
+  text-overflow: ellipsis;
 `;
 
 const Buttons = styled.div`
-  display: flex;
+  min-width: 81px;
   height: 39px;
 `;
 
 const FilterButton = styled.button`
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -42,7 +41,6 @@ const FilterButton = styled.button`
 `;
 
 const SearchButton = styled.button`
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -57,18 +55,16 @@ function SearchBar() {
     } = event;
     setValue(value);
   };
-  // console.log(value);
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setValue("");
-    console.log(event.currentTarget.value);
   };
   //! input 창에 작성된 value 값이 Article.tsx 에 있는 article 과 같을 때 해당 article만 보여주는 코드 구현하기
-  const temp = () => {
-    if (value) {
-      return null;
-    }
-  };
+  // const temp = () => {
+  //   if (value) {
+  //     return null;
+  //   }
+  // };
   return (
     <Form onSubmit={onSubmit}>
       <Input
