@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Bell } from "../assets/bell.svg";
 import { ReactComponent as Logo } from "../assets/logo.svg";
@@ -9,20 +8,24 @@ const StyledTopBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 45px;
   top: 0px;
   padding: 0 8px;
-  height: 45px;
 `;
 
 const StyledLogo = styled.div`
-  padding-top: 9px;
-  padding-left: 5px;
-  width: 50px;
-  font-size: 10px;
+  height: 14px;
   cursor: pointer;
 `;
 
-const StyledBell = styled(motion.div)`
+const StyledBell = styled(Bell)`
+  height: 22px;
+  min-width: 19px;
+  transition: all 0.3s ease-in-out 0s;
+  :hover {
+    transform: rotate(30deg);
+    transition: all 0.3s ease-in-out 0s;
+  }
   cursor: pointer;
 `;
 
@@ -39,9 +42,7 @@ function TopBar() {
       <StyledLogo>
         <Logo onClick={moveToHome} />
       </StyledLogo>
-      <StyledBell whileHover={{ rotate: 30 }}>
-        <Bell onClick={moveToAccount} />
-      </StyledBell>
+      <StyledBell onClick={moveToAccount} />
     </StyledTopBar>
   );
 }
