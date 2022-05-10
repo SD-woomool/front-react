@@ -3,6 +3,7 @@ import Article, { IArticle } from "./Article";
 import { ReactComponent as Pencil } from "../assets/pencil.svg";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledArticleList = styled.div`
   #lastPlace {
@@ -50,8 +51,12 @@ const StyledSpan = styled.span`
 
 function ArticleList({ articles }: { articles: IArticle[] }) {
   const [clicked, setClicked] = useState<boolean>(true);
+  const navigate = useNavigate();
   const onClick = () => {
     setClicked((clicked) => !clicked);
+  };
+  const moveToCourse = () => {
+    navigate(`/community/write`);
   };
   return (
     <StyledArticleList>
@@ -76,7 +81,7 @@ function ArticleList({ articles }: { articles: IArticle[] }) {
         <Article key={index} article={article} />
       ))}
       <div id="lastPlace">마지막 검색 결과입니다.</div>
-      <button id="pencil">
+      <button id="pencil" onClick={moveToCourse}>
         <Pencil />
       </button>
     </StyledArticleList>

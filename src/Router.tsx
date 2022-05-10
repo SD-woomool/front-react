@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Community from "./pages/Community";
 import Account from "./pages/Account";
 import Test from "./pages/Test";
+import Write from "./components/Write";
 
 function Router() {
   return (
@@ -19,6 +20,9 @@ function Router() {
           <Route path="account">
             <Route index element={<Account />} />
           </Route>
+        </Route>
+        <Route path="/community/write">
+          <Route index element={<Write />} />
         </Route>
       </Routes>
     </BrowserRouter>
