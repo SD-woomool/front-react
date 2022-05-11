@@ -1,43 +1,211 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as Arrow } from "../assets/arrow.svg";
+import { useEffect } from "react";
+
+const Header = styled.div`
+  max-width: 600px;
+`;
+
+const TopFixedBar = styled.div`
+  display: flex;
+  position: sticky;
+  align-items: center;
+  height: 45px;
+  padding: 0 20px;
+  top: 0;
+  z-index: 999;
+  background-color: rgb(255, 255, 255);
+  svg {
+    cursor: pointer;
+  }
+  div {
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 20px;
+    margin: 0px auto;
+    /* display: inline-block; */
+    font-size: 20px;
+    color: rgb(56, 127, 234);
+  }
+`;
+
+const Title = styled.input`
+  border-radius: 0px;
+  width: 578px;
+  min-height: 18px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(92, 92, 92);
+  border-bottom: 1px solid rgb(227, 227, 227);
+`;
+
+const Map = styled.div`
+  height: 146px;
+  :focus {
+    outline: none;
+  }
+`;
 
 const Body = styled.div`
-  background-color: pink;
-  height: 100%;
+  min-width: 560px;
+  padding: 0 20px;
+  font-size: 14px;
+`;
+
+const Name = styled.div`
+  color: rgb(124, 124, 124);
+`;
+
+const Course = styled.div`
+  margin-bottom: 20px;
+  div:first-child {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  div:nth-child(2) {
+    max-height: 60px;
+    text-align: center;
+    padding: 15px 0;
+    color: rgb(170, 170, 170);
+  }
+  button {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid rgb(227, 227, 227);
+    color: rgb(170, 170, 170);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+`;
+
+const Description = styled.div`
+  margin-bottom: 20px;
+  div {
+    margin-bottom: 10px;
+  }
+  textarea {
+    min-height: 200px;
+    min-width: 540px;
+    padding: 10px;
+    border: 1px solid rgb(227, 227, 227);
+    border-radius: 10px;
+    resize: none;
+    ::placeholder {
+      color: rgb(170, 170, 170);
+      font-size: 14px;
+    }
+  }
+`;
+
+const Transportation = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 20px;
+  button {
+    padding: 2px 10px;
+    margin-left: 10px;
+    color: rgb(170, 170, 170);
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+`;
+
+const Tag = styled.div`
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  #tag {
+    display: inline-block;
+  }
+  span {
+    margin-left: 5px;
+    font-size: 12px;
+    color: rgb(170, 170, 170);
+  }
+`;
+
+const Form = styled.form`
+  position: relative;
+  margin-bottom: 10px;
+  input {
+    width: 550px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid rgb(227, 227, 227);
+    border-radius: 6px;
+  }
+  button {
+    position: absolute;
+    right: 10px;
+    line-height: 20px;
+    top: calc(50% - 10px);
+    font-size: 20px;
+    color: rgb(156, 156, 156);
+  }
+`;
+
+const CompleteBtn = styled.button`
+  width: 560px;
+  margin: 20px 0;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid rgb(227, 227, 227);
+  font-size: 18px;
+  color: rgb(170, 170, 170);
 `;
 
 function Write() {
+  useEffect(() => {
+    let map;
+    const initMap = () => {
+      const map = new naver.maps.Map("map", {
+        center: new naver.maps.LatLng(37.511337, 127.012084),
+        zoom: 13,
+      });
+    };
+    initMap();
+  }, []);
   return (
-    <Body>
-      <div>
-        <button>버튼아이콘</button>
-        <span>코스</span>
-      </div>
-      <div>코스 제목을 입력해주세요.</div>
-      <div>네이버 지도 들어갈 공간</div>
-      <div>
+    <Header>
+      <TopFixedBar>
+        <Arrow />
         <div>코스</div>
-        <div>아직 추가된 장소가 없습니다! 추가해주세요!</div>
-        <button>장소추가</button>
-      </div>
-      <div>
-        <div>설명</div>
-        <div>코스에 대한 설명을 적어주세요.</div>
-      </div>
-      <div>
-        <span>교통수단</span>
-        <button>대중교통</button>
-        <button>자동차</button>
-      </div>
-      <div>
-        <span>태그</span>
-        <span>(선택)</span>
-        <div>
+      </TopFixedBar>
+      <Title placeholder="코스 제목을 입력해주세요." />
+      <Map id="map"></Map>
+      <Body>
+        <Course>
+          <Name>코스</Name>
+          <div>아직 추가된 장소가 없습니다! 추가해주세요!</div>
+          <button>장소추가</button>
+        </Course>
+        <Description>
+          <Name>설명</Name>
+          <textarea placeholder="코스에 대한 설명을 적어주세요." />
+        </Description>
+        <Transportation>
+          <Name>교통수단</Name>
+          <button>대중교통</button>
+          <button>자동차</button>
+        </Transportation>
+        <Tag>
+          <Name id="tag">태그</Name>
+          <span>(선택)</span>
+        </Tag>
+        <Form>
+          <input type="text" />
           <button>+</button>
-        </div>
-      </div>
-      <button>작성완료</button>
-    </Body>
+        </Form>
+        <CompleteBtn>작성완료</CompleteBtn>
+      </Body>
+    </Header>
   );
 }
 
