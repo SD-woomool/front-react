@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../assets/arrow.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = styled.div`
   max-width: 600px;
@@ -17,33 +18,38 @@ const TopFixedBar = styled.div`
   z-index: 999;
   background-color: rgb(255, 255, 255);
   svg {
+    height: 16px;
     cursor: pointer;
   }
-  div {
-    align-items: center;
-    justify-content: center;
-    width: 37px;
-    height: 20px;
-    margin: 0px auto;
-    /* display: inline-block; */
-    font-size: 20px;
-    color: rgb(56, 127, 234);
-  }
+`;
+
+const FixedBarTitle = styled.div`
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  height: 20px;
+  margin: 0px auto;
+  font-size: 20px;
+  color: rgb(56, 127, 234);
 `;
 
 const Title = styled.input`
   border-radius: 0px;
   width: 578px;
-  min-height: 18px;
+  height: 18px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid rgb(255, 255, 255);
   color: rgb(92, 92, 92);
   border-bottom: 1px solid rgb(227, 227, 227);
+  :focus {
+    border-color: rgb(56, 127, 234);
+    outline: none;
+  }
 `;
 
 const Map = styled.div`
-  height: 146px;
+  height: 200px;
   :focus {
     outline: none;
   }
@@ -97,6 +103,10 @@ const Description = styled.div`
       color: rgb(170, 170, 170);
       font-size: 14px;
     }
+    :focus {
+      border-color: rgb(56, 127, 234);
+      outline: none;
+    }
   }
 `;
 
@@ -113,6 +123,11 @@ const Transportation = styled.div`
     border-radius: 10px;
     font-size: 12px;
     cursor: pointer;
+  }
+  .clicked {
+    color: rgb(255, 255, 255);
+    background-color: rgb(56, 127, 234);
+    border: 1px solid rgb(56, 127, 234);
   }
 `;
 
@@ -162,6 +177,14 @@ const CompleteBtn = styled.button`
 `;
 
 function Write() {
+  const navigate = useNavigate();
+  const [color, setColor] = useState(0);
+  const goBack = () => {
+    navigate(-1);
+  };
+  const chooseTrans = (id) => {
+    setColor(id);
+  };
   useEffect(() => {
     let map;
     const initMap = () => {
@@ -175,8 +198,8 @@ function Write() {
   return (
     <Header>
       <TopFixedBar>
-        <Arrow />
-        <div>코스</div>
+        <Arrow onClick={goBack} />
+        <FixedBarTitle>코스</FixedBarTitle>
       </TopFixedBar>
       <Title placeholder="코스 제목을 입력해주세요." />
       <Map id="map"></Map>
@@ -192,8 +215,18 @@ function Write() {
         </Description>
         <Transportation>
           <Name>교통수단</Name>
-          <button>대중교통</button>
-          <button>자동차</button>
+          <button
+            className={color === 1 ? "clicked" : ""}
+            onClick={() => chooseTrans(1)}
+          >
+            대중교통
+          </button>
+          <button
+            className={color === 2 ? "clicked" : ""}
+            onClick={() => chooseTrans(2)}
+          >
+            자동차
+          </button>
         </Transportation>
         <Tag>
           <Name id="tag">태그</Name>
