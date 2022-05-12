@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 const StyledDescription = styled.div`
   margin-bottom: 20px;
+  box-sizing: border-box;
+  @media screen and (max-width: 600px) {
+    width: calc(100vw - 50px);
+  }
 `;
 
 const Name = styled.div`
@@ -12,7 +16,7 @@ const Name = styled.div`
 
 const TextArea = styled.textarea`
   min-height: 200px;
-  min-width: 540px;
+  width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid rgb(227, 227, 227);
   border-radius: 10px;

@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 const StyledCourse = styled.div`
   margin-bottom: 20px;
+  box-sizing: border-box;
+  @media screen and (max-width: 600px) {
+    width: calc(100vw - 50px);
+  }
 `;
 
 const Name = styled.div`

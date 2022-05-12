@@ -19,11 +19,13 @@ const Title = styled.input`
   padding: 10px;
   font-size: 16px;
   border: 1px solid rgb(255, 255, 255);
-  color: rgb(92, 92, 92);
   border-bottom: 1px solid rgb(227, 227, 227);
   :focus {
     border-color: rgb(56, 127, 234);
     outline: none;
+  }
+  ::placeholder {
+    color: rgb(170, 170, 170);
   }
 `;
 

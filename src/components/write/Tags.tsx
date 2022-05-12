@@ -21,14 +21,19 @@ const Name = styled.div`
 const Form = styled.form`
   position: relative;
   margin-bottom: 10px;
+  box-sizing: border-box;
+  @media screen and (max-width: 600px) {
+    width: calc(100vw - 50px);
+  }
 `;
 
 const Input = styled.input`
-  width: 550px;
+  width: calc(100% - 10px);
   padding: 5px;
   font-size: 14px;
   border: 1px solid rgb(227, 227, 227);
   border-radius: 6px;
+
   :focus {
     border-color: rgb(56, 127, 234);
     outline: none;

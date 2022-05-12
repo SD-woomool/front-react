@@ -10,6 +10,10 @@ const StyledCompleteBtn = styled.button`
   border: 1px solid rgb(227, 227, 227);
   font-size: 18px;
   color: rgb(170, 170, 170);
+  box-sizing: border-box;
+  @media screen and (max-width: 600px) {
+    width: calc(100vw - 50px);
+  }
 `;
 
 function CompleteBtn() {

@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const StyledTrans = styled.div`
-  display: flex;
   align-items: center;
   margin-bottom: 20px;
-  height: 20px;
+  box-sizing: border-box;
+  @media screen and (max-width: 240px) {
+    width: calc(100vw - 50px);
+  }
   .clicked {
     color: rgb(255, 255, 255);
     background-color: rgb(56, 127, 234);
@@ -14,8 +16,9 @@ const StyledTrans = styled.div`
   }
 `;
 
-const Name = styled.div`
+const Name = styled.span`
   color: rgb(124, 124, 124);
+  min-width: 51px;
 `;
 
 const Button = styled.button`
