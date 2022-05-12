@@ -131,7 +131,7 @@ const Transportation = styled.div`
   }
 `;
 
-const Tag = styled.div`
+const Tags = styled.div`
   width: 100%;
   margin-top: 15px;
   margin-bottom: 10px;
@@ -154,6 +154,10 @@ const Form = styled.form`
     font-size: 14px;
     border: 1px solid rgb(227, 227, 227);
     border-radius: 6px;
+    :focus {
+      border-color: rgb(56, 127, 234);
+      outline: none;
+    }
   }
   button {
     position: absolute;
@@ -165,9 +169,27 @@ const Form = styled.form`
   }
 `;
 
+const TagsBox = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+  gap: 5px 10px;
+`;
+
+const TagItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(56, 127, 234);
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(56, 127, 234);
+  cursor: pointer;
+`;
+
 const CompleteBtn = styled.button`
   width: 560px;
-  margin: 20px 0;
   height: 40px;
   text-align: center;
   border-radius: 10px;
@@ -179,11 +201,29 @@ const CompleteBtn = styled.button`
 function Write() {
   const navigate = useNavigate();
   const [color, setColor] = useState(0);
+  const [tagItem, setTagItem] = useState("");
+  const [tagList, setTagList] = useState([]);
   const goBack = () => {
     navigate(-1);
   };
   const chooseTrans = (id) => {
     setColor(id);
+  };
+  const addPlaces = () => {
+    navigate("/community/places");
+  };
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    if (event.target.tag.value.length !== 0) {
+      let updatedTagList = [...tagList];
+      updatedTagList.push(tagItem);
+      setTagList(updatedTagList);
+      setTagItem("");
+    }
+  };
+  const deleteTagItem = (id) => {
+    const filteredTagList = tagList.filter((tagItem) => tagItem !== id);
+    setTagList(filteredTagList);
   };
   useEffect(() => {
     let map;
@@ -207,7 +247,7 @@ function Write() {
         <Course>
           <Name>코스</Name>
           <div>아직 추가된 장소가 없습니다! 추가해주세요!</div>
-          <button>장소추가</button>
+          <button onClick={addPlaces}>장소추가</button>
         </Course>
         <Description>
           <Name>설명</Name>
@@ -228,14 +268,28 @@ function Write() {
             자동차
           </button>
         </Transportation>
-        <Tag>
+        <Tags>
           <Name id="tag">태그</Name>
           <span>(선택)</span>
-        </Tag>
-        <Form>
-          <input type="text" />
+        </Tags>
+        <Form onSubmit={onSubmitHandler}>
+          <input
+            type="text"
+            name="tag"
+            value={tagItem}
+            onChange={(event) => setTagItem(event.target.value)}
+          />
           <button>+</button>
         </Form>
+        <TagsBox>
+          {tagList.map((tagItem, index) => {
+            return (
+              <TagItem key={index} onClick={() => deleteTagItem(tagItem)}>
+                <span>{tagItem + " x"}</span>
+              </TagItem>
+            );
+          })}
+        </TagsBox>
         <CompleteBtn>작성완료</CompleteBtn>
       </Body>
     </Header>
