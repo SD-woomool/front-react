@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Community from "./pages/Community";
 import Account from "./pages/Account";
 import Test from "./pages/Test";
-import Places from "./components/Places";
+import Places from "./components/places/Places";
 import Write from "./components/write/Write";
 
 function Router() {

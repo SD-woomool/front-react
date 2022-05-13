@@ -29,7 +29,7 @@ const StyledBell = styled(Bell)`
   cursor: pointer;
 `;
 
-function TopBar() {
+function TopWriteBar() {
   const navigate = useNavigate();
   const moveToHome = () => {
     navigate(`/`);
@@ -47,4 +47,4 @@ function TopBar() {
   );
 }
 
-export default TopBar;
+export default TopWriteBar;

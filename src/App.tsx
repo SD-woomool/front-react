@@ -5,7 +5,7 @@ import BottomNavigation from "./components/BottomNavigation";
 import { initAuth, setAuth } from "./context/auth/local-storage/util";
 import { checkAuth } from "./api/auth";
 import { ReactComponent as Loader } from "./assets/loader.svg";
-import TopBar from "./components/TopBar";
+import TopBar from "./components/TopWriteBar";
 
 function App() {
   const [loading, setLoading] = useState(true);
