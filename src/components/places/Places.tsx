@@ -1,9 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 import TopPlacesBar from "./TopPlacesBar";
+import SearchPlaces from "./SearchPlaces";
+import PlacesTags from "./PlacesTags";
 
 function Places() {
-  return <TopPlacesBar />;
+  return (
+    <div>
+      <TopPlacesBar />
+      <SearchPlaces />
+      <PlacesTags />
+    </div>
+  );
 }
 
 export default Places;
