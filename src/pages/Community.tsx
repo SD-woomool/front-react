@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { loadCommunityArticles } from "../api/communityApi";
 import ArticleList from "../components/ArticleList";
-import styled from "styled-components";
-
-const StyledLoading = styled.div`
-  font-size: 40px;
-`;
+import SearchBar from "../components/SearchBar";
+import Loading from "../components/Loading";
 
 function Community() {
   const [state, setState] = useState({
@@ -25,11 +22,10 @@ function Community() {
   }, []);
 
   return state.loading ? (
-    <StyledLoading>loading...</StyledLoading>
+    <Loading />
   ) : (
     <div>
-      <div>Community</div>
-      <p>articles</p>
+      <SearchBar />
       <ArticleList articles={state.articles} />
     </div>
   );

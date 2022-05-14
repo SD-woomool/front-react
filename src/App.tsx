@@ -1,10 +1,13 @@
 import BottomNavigation from "./components/BottomNavigation";
 import React, { useEffect } from "react";
-import { ReactComponent as Loader } from "./assets/loader.svg";
+import { Outlet } from "react-router-dom";
 import makeServer from "./api/mockServer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./context/store";
 import { fetchAccountInfoThunk } from "./context/reducer/accountReducer";
+
+import TopBar from "./components/TopWriteBar";
+import Loading from "./components/Loading";
 
 makeServer(process.env.NODE_ENV);
 
@@ -16,7 +19,15 @@ function App() {
     dispatch(fetchAccountInfoThunk());
   }, []);
 
-  return isLoading ? <Loader width="40" height="40" /> : <BottomNavigation />;
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <>
+      <TopBar />
+      <Outlet />
+      <BottomNavigation />
+    </>
+  );
 }
 
 export default App;

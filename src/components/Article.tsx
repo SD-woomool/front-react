@@ -3,24 +3,23 @@ import styled from "styled-components";
 import Category from "./Category";
 
 const StyledArticle = styled.div`
+  display: flex;
   min-height: 85px;
   border-bottom: 1px solid rgb(227, 227, 227);
   padding: 10px 15px;
   margin-bottom: 5px;
-  display: flex;
 
   &:hover {
-    // & 문자를 사용하여 자기 자신 선택
     background-color: #f7f7f7;
   }
 
+  // place 뒤에 붙는 아이콘
   svg {
-    // place 뒤에 붙는 아이콘
     width: 13px;
     height: 13px;
-    fill: #9c9c9c;
     margin-left: 2px;
     vertical-align: bottom;
+    fill: #9c9c9c;
   }
 
   .image {
@@ -50,7 +49,7 @@ const StyledArticle = styled.div`
   }
 
   #places {
-    margin: 5px 0px;
+    margin: 5px 0;
     max-height: 85px;
     overflow: hidden;
     text-overflow: ellipsis; // ...

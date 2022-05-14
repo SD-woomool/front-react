@@ -4,6 +4,8 @@ import Community from "./pages/Community";
 import Account from "./pages/Account";
 import App from "./App";
 import React from "react";
+import Places from "./components/places/Places";
+import Write from "./components/write/Write";
 
 function Router() {
   return (
@@ -17,6 +19,12 @@ function Router() {
           <Route path="account">
             <Route index element={<Account />} />
           </Route>
+        </Route>
+        <Route path="/community/write">
+          <Route index element={<Write />} />
+        </Route>
+        <Route path="/community/places">
+          <Route index element={<Places />} />
         </Route>
       </Routes>
     </BrowserRouter>
