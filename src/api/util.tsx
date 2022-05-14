@@ -8,8 +8,4 @@ export function fakeFetch(
   });
 }
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080";
-
-export function addBackendUrl(url: string) {
-  return backendUrl + url;
-}
+export const backendUrl = process.env.REACT_APP_BACKEND_URL || "/api";
