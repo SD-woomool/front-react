@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import BottomNavigation from "./components/BottomNavigation";
 import { initAuth, setAuth } from "./context/auth/local-storage/util";
 import { checkAuth } from "./api/auth";
-import { ReactComponent as Loader } from "./assets/loader.svg";
+// import { ReactComponent as Loader } from "./assets/loader.svg";
 import TopBar from "./components/TopWriteBar";
+import Loading from "./components/Loading";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ function App() {
   }, []);
 
   return loading ? (
-    <Loader width="40" height="40" />
+    <Loading />
   ) : (
     <>
       <TopBar />

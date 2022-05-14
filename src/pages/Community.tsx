@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { loadCommunityArticles } from "../api/community";
 import ArticleList from "../components/ArticleList";
 import SearchBar from "../components/SearchBar";
+import Loading from "../components/Loading";
 
 const StyledLoading = styled.div`
   font-size: 40px;
@@ -26,7 +27,7 @@ function Community() {
   }, []);
 
   return state.loading ? (
-    <StyledLoading>loading...</StyledLoading>
+    <Loading />
   ) : (
     <div>
       <SearchBar />
