@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TopFixedBar from "./TopFixedBar";
 import Course from "./Course";
 import Description from "./Description";
 import Transportation from "./Transportation";
 import Tags from "./Tags";
-import CompleteBtn from "./CompleteBtn";
 
 const Header = styled.div`
   max-width: 600px;
@@ -42,6 +41,21 @@ const Body = styled.div`
   font-size: 14px;
 `;
 
+const CompleteBtn = styled.button`
+  width: 560px;
+  height: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(227, 227, 227);
+  font-size: 18px;
+  color: rgb(170, 170, 170);
+  box-sizing: border-box;
+  @media screen and (max-width: 600px) {
+    width: calc(100vw - 50px);
+  }
+`;
+
 function Write() {
   useEffect(() => {
     let map;
@@ -53,17 +67,29 @@ function Write() {
     };
     initMap();
   }, []);
+  const [value, setValue] = useState("");
+  const onClickHandler = () => {
+    if (value.length === 0) {
+      // div 를 생성해서 3초정도 간 보여주고 없애는 효과 구현하기
+    }
+  };
   return (
     <Header>
       <TopFixedBar />
-      <Title placeholder="코스 제목을 입력해주세요." />
+      <Title
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+        placeholder="코스 제목을 입력해주세요."
+      />
       <Map id="map"></Map>
       <Body>
         <Course />
         <Description />
         <Transportation />
         <Tags />
-        <CompleteBtn />
+        <CompleteBtn value={value} onClick={onClickHandler}>
+          작성완료
+        </CompleteBtn>
       </Body>
     </Header>
   );
