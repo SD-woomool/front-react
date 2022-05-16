@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useEffect } from "react";
 import TopFixedBar from "./TopFixedBar";
 import Course from "./Course";
 import Description from "./Description";
@@ -13,17 +12,19 @@ const Header = styled.div`
 `;
 
 const Title = styled.input`
-  border-radius: 0px;
+  border-radius: 0;
   width: 578px;
   height: 18px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid rgb(255, 255, 255);
   border-bottom: 1px solid rgb(227, 227, 227);
+
   :focus {
     border-color: rgb(56, 127, 234);
     outline: none;
   }
+
   ::placeholder {
     color: rgb(170, 170, 170);
   }
@@ -31,6 +32,7 @@ const Title = styled.input`
 
 const Map = styled.div`
   height: 200px;
+
   :focus {
     outline: none;
   }
@@ -44,7 +46,6 @@ const Body = styled.div`
 
 function Write() {
   useEffect(() => {
-    let map;
     const initMap = () => {
       const map = new naver.maps.Map("map", {
         center: new naver.maps.LatLng(37.511337, 127.012084),

@@ -1,11 +1,11 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import cafeSvg from "../../assets/cafe.svg";
 
 const Map = styled.div`
   width: 100%;
   height: calc(100vh - 130px);
+
   :focus {
     outline: none;
   }
@@ -13,16 +13,15 @@ const Map = styled.div`
 
 function NaverMap() {
   useEffect(() => {
-    let map;
     const initMap = () => {
       const map = new naver.maps.Map("map", {
         center: new naver.maps.LatLng(37.511337, 127.012084),
         zoom: 13,
       });
       // cafe 마커 예시 => 현재는 최초 렌더링 시 실행되는 코드 블럭 안에 넣어두었지만, 위치 이동시켜야 함
-      var cafeMarker = new naver.maps.Marker({
+      let cafeMarker = new naver.maps.Marker({
         position: new naver.maps.LatLng(37.363777, 127.1174332),
-        map: map,
+        map,
         icon: {
           content: `
             <div id="content" style="background:#ffffff;width:24px;height:24px;border:3px solid #387FEA;border-radius:50%;position:absolute;top:-2px;left:-1.5px;display:flex;justify-content:center;align-items:center;">
@@ -34,7 +33,6 @@ function NaverMap() {
           anchor: new naver.maps.Point(19, 58),
         },
       });
-      console.log(cafeSvg);
     };
     initMap();
   }, []);

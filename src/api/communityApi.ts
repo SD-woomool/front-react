@@ -1,13 +1,13 @@
-import { addBackendUrl, fakeFetch } from "./util";
+import { backendUrl, fakeFetch } from "./util";
 
 export function loadCommunityArticles(page = 1, size = 15) {
-  return fakeFetch(addBackendUrl("/community"), {
+  return fakeFetch(backendUrl + "/community", {
     data: {
       articles: [
         {
           id: 1,
           title: "데이트는 역시 남산이죠?",
-          thumbnail: "https://i.ytimg.com/vi/o1Q2LrH6-eg/maxresdefault.jpg", 
+          thumbnail: "https://i.ytimg.com/vi/o1Q2LrH6-eg/maxresdefault.jpg",
           places: [
             {
               placeId: 1,
@@ -65,7 +65,8 @@ export function loadCommunityArticles(page = 1, size = 15) {
         },
         {
           id: 3,
-          title: "맨헤튼 말고 송도에 있는 센트럴파크요!! 이거는 엄청 엄청 긴 제목입니다! 한줄만 보여주세요!",
+          title:
+            "맨헤튼 말고 송도에 있는 센트럴파크요!! 이거는 엄청 엄청 긴 제목입니다! 한줄만 보여주세요!",
           places: [
             {
               placeId: 5,
@@ -134,8 +135,9 @@ export function loadCommunityArticles(page = 1, size = 15) {
         },
         {
           id: 4,
-          title: "맨헤튼 말고 송도에 있는 센트럴파크요!! 이거는 엄청 엄청 긴 제목입니다! 한줄만 보여주세요!",
-          thumbnail: "https://i.ytimg.com/vi/o1Q2LrH6-eg/maxresdefault.jpg", 
+          title:
+            "맨헤튼 말고 송도에 있는 센트럴파크요!! 이거는 엄청 엄청 긴 제목입니다! 한줄만 보여주세요!",
+          thumbnail: "https://i.ytimg.com/vi/o1Q2LrH6-eg/maxresdefault.jpg",
           places: [
             {
               placeId: 5,

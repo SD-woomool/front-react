@@ -12,6 +12,7 @@ const TopBar = styled.div`
   top: 0;
   z-index: 999;
   background-color: rgb(255, 255, 255);
+
   svg {
     height: 16px;
     cursor: pointer;
@@ -23,7 +24,7 @@ const Title = styled.div`
   justify-content: center;
   width: 37px;
   height: 20px;
-  margin: 0px auto;
+  margin: 0 auto;
   font-size: 20px;
   color: rgb(56, 127, 234);
 `;

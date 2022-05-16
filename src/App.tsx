@@ -1,37 +1,30 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
 import BottomNavigation from "./components/BottomNavigation";
-import { initAuth, setAuth } from "./context/auth/local-storage/util";
-import { checkAuth } from "./api/auth";
-// import { ReactComponent as Loader } from "./assets/loader.svg";
+import React, { useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import makeServer from "./api/mockServer";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "./context/store";
+import { fetchAccountInfoThunk } from "./context/reducer/accountReducer";
+
 import TopBar from "./components/TopWriteBar";
 import Loading from "./components/Loading";
 
+makeServer(process.env.NODE_ENV);
+
 function App() {
-  const [loading, setLoading] = useState(true);
+  const isLoading = useSelector<RootState>((state) => state.account.loading);
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    // 최초 실행시 실행
-    // 로그인 되었는지 여부 체크 및 기타 초기화 작업
-    checkAuth().then((result) => {
-      if (result.isLogin === true) {
-        setAuth({
-          isLogin: true,
-          ...result.user,
-        });
-      } else {
-        setAuth(initAuth());
-      }
-      setLoading(false);
-    });
+    // 최초 실행시 한번만 실행, 유저 정보를 가져온다.
+    dispatch(fetchAccountInfoThunk());
   }, []);
 
-  return loading ? (
+  return isLoading ? (
     <Loading />
   ) : (
     <>
       <TopBar />
-      <Outlet /> {/* <App /> 하위 계층에 있는 모든 Route들  */}
+      <Outlet />
       <BottomNavigation />
     </>
   );
