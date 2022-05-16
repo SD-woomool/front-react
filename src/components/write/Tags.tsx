@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useState } from "react";
 
 const StyledTags = styled.div`
   width: 100%;
   margin-top: 15px;
   margin-bottom: 10px;
+
   span {
     margin-left: 5px;
     font-size: 12px;
@@ -58,7 +58,7 @@ const TagsBox = styled.div`
 const TagItem = styled.div`
   display: flex;
   align-items: center;
-  margin: 0px;
+  margin: 0;
   padding: 2px 10px;
   border-radius: 10px;
   border: 1px solid rgb(56, 127, 234);

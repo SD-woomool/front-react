@@ -83,13 +83,13 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -102,83 +102,85 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+    display: block;
 }
+
 body {
-  line-height: 1;
-  max-width: 600px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+    line-height: 1;
+    max-width: 600px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
+
 ol,
 ul {
-  list-style: none;
+    list-style: none;
 }
+
 blockquote,
 q {
-  quotes: none;
+    quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
-  content: none;
+    content: "";
+    content: none;
 }
+
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 a {
-  text-decoration: None;
-  color: inherit;
+    text-decoration: None;
+    color: inherit;
 }
 
 *:not(input, textarea) {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.noselect, a[href="https://ssl.pstatic.net/static/maps/mantle/notice/legal.html"]
-{
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.noselect, a[href="https://ssl.pstatic.net/static/maps/mantle/notice/legal.html"] {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 input,
 textarea,
 button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 button {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  cursor: pointer;
-  background: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+    background: none;
 }
 
 html,
 body,
 #react-root {
-  height: 100%;
-  background-color: #ffffff;
+    height: 100%;
+    background-color: #ffffff;
 }
 
 body {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }

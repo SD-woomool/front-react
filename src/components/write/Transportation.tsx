@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useState } from "react";
 
 const StyledTrans = styled.div`
   align-items: center;
@@ -9,6 +8,7 @@ const StyledTrans = styled.div`
   @media screen and (max-width: 240px) {
     width: calc(100vw - 50px);
   }
+
   .clicked {
     color: rgb(255, 255, 255);
     background-color: rgb(56, 127, 234);

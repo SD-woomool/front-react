@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Article, { IArticle } from "./Article";
 import { ReactComponent as Pencil } from "../assets/pencil.svg";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const StyledArticleList = styled.div`
@@ -34,6 +33,7 @@ const ContentBox = styled.div`
   border-bottom: 1px solid rgb(227, 227, 227);
   max-height: 23px;
   justify-content: space-between;
+
   span.active {
     color: rgb(56, 127, 234);
   }
@@ -44,6 +44,7 @@ const StyledSpan = styled.span`
   max-width: 43px;
   margin-left: 5px;
   cursor: pointer;
+
   ::before {
     content: "•";
   }
@@ -63,16 +64,10 @@ function ArticleList({ articles }: { articles: IArticle[] }) {
       <ContentBox>
         <div>코스 {articles.length}개</div>
         <div>
-          <StyledSpan
-            className={clicked === true ? "active" : ""}
-            onClick={onClick}
-          >
+          <StyledSpan className={clicked ? "active" : ""} onClick={onClick}>
             최신순
           </StyledSpan>
-          <StyledSpan
-            className={clicked === false ? "active" : ""}
-            onClick={onClick}
-          >
+          <StyledSpan className={!clicked ? "active" : ""} onClick={onClick}>
             좋아요
           </StyledSpan>
         </div>

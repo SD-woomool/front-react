@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useState } from "react";
 
 const Form = styled.form`
   display: flex;
@@ -10,7 +9,7 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  flex: 1 1 0%;
+  flex: 1 1 0;
   width: 70%;
   padding: 5px 10px;
   border: 1px solid rgb(255, 255, 255);
@@ -29,6 +28,7 @@ const FilterButton = styled.button`
   justify-content: center;
   width: 40px;
   height: 100%;
+
   ::after {
     content: "";
     width: 1px;

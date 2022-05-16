@@ -9,7 +9,7 @@ const StyledTopBar = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 45px;
-  top: 0px;
+  top: 0;
   padding: 0 8px;
 `;
 
@@ -22,10 +22,12 @@ const StyledBell = styled(Bell)`
   height: 22px;
   min-width: 19px;
   transition: all 0.3s ease-in-out 0s;
+
   :hover {
     transform: rotate(30deg);
     transition: all 0.3s ease-in-out 0s;
   }
+
   cursor: pointer;
 `;
 

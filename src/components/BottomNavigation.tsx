@@ -18,6 +18,7 @@ const Navigation = styled.div`
   right: 0;
   left: 0;
   border-top: 1px solid rgb(227, 227, 227);
+
   .active {
     fill: rgb(56, 127, 234);
     cursor: pointer;
