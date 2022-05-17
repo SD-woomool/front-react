@@ -5,6 +5,9 @@ import Course from "./Course";
 import Description from "./Description";
 import Transportation from "./Transportation";
 import Tags from "./Tags";
+import { useDispatch, useSelector } from "react-redux";
+import { putMessageThunk } from "../../context/reducer/messageReducer";
+import { RootState, AppDispatch } from "../../context/store";
 
 const Header = styled.div`
   max-width: 600px;
@@ -31,7 +34,6 @@ const Title = styled.input`
 
 const Map = styled.div`
   height: 200px;
-
   :focus {
     outline: none;
   }
@@ -58,6 +60,34 @@ const CompleteBtn = styled.button`
   }
 `;
 
+const Message = styled.div`
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  max-width: 540px;
+  margin: 0 auto;
+  width: 70%;
+  height: auto;
+  left: 1px;
+  right: 1px;
+  top: 80%;
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+  background-color: rgb(234, 56, 56);
+  border-radius: 10px;
+  line-height: 1.5rem;
+  animation: 3s ease 1s 1 normal none running fadeInOut;
+  :before {
+    -webkit-animation: loader9g 3s ease-in-out infinite;
+    animation: loader9g 3s ease-in-out infinite;
+  }
+  :after {
+    -webkit-animation: loader9d 3s ease-in-out infinite;
+    animation: loader9d 3s ease-in-out infinite;
+  }
+`;
+
 function Write() {
   useEffect(() => {
     const initMap = () => {
@@ -68,18 +98,28 @@ function Write() {
     };
     initMap();
   }, []);
-  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const messages = useSelector<RootState, string[]>((state) =>
+    state.message.map((el: any) => el.message)
+  );
+  console.log(messages);
+  const dispatch = useDispatch<AppDispatch>();
   const onClickHandler = () => {
-    if (value.length === 0) {
-      // div 를 생성해서 3초정도 간 보여주고 없애는 효과 구현하기
+    if (title.length === 0) {
+      dispatch(
+        putMessageThunk({
+          message: "코스의 제목을 작성해주세요.",
+          timeout: 3000,
+        })
+      );
     }
   };
   return (
     <Header>
       <TopFixedBar />
       <Title
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
+        onChange={(e) => setTitle(e.target.value)}
+        value={title}
         placeholder="코스 제목을 입력해주세요."
       />
       <Map id="map"></Map>
@@ -88,9 +128,12 @@ function Write() {
         <Description />
         <Transportation />
         <Tags />
-        <CompleteBtn value={value} onClick={onClickHandler}>
+        <CompleteBtn value={title} onClick={onClickHandler}>
           작성완료
         </CompleteBtn>
+        {messages.map((el, index) => (
+          <Message key={index}>{el}</Message>
+        ))}
       </Body>
     </Header>
   );
