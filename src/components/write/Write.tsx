@@ -77,14 +77,17 @@ const Message = styled.div`
   background-color: rgb(234, 56, 56);
   border-radius: 10px;
   line-height: 1.5rem;
-  animation: 3s ease 1s 1 normal none running fadeInOut;
-  :before {
-    -webkit-animation: loader9g 3s ease-in-out infinite;
-    animation: loader9g 3s ease-in-out infinite;
-  }
-  :after {
-    -webkit-animation: loader9d 3s ease-in-out infinite;
-    animation: loader9d 3s ease-in-out infinite;
+  animation: animate 3s ease-in-out;
+  @keyframes animate {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 `;
 
